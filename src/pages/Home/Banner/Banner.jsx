@@ -10,7 +10,7 @@ import img6 from '../../../assets/home/06.png'
 
 const Banner = () => {
     return (
-        <div className="h-[800px] mb-24" >
+        <div className=" " >
             <Carousel showThumbs={true} swipeable={true} >
 
                 <div className="carousel-img-div">
