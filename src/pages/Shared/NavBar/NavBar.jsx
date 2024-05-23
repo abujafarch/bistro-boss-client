@@ -28,10 +28,10 @@ const NavBar = () => {
                 </div>
                 <div className="items-center text-white font-semibold gap-4 hidden lg:flex">
                     <NavLink to='/'>HOME</NavLink>
-                    <NavLink to='contact-us'>CONTACT US</NavLink>
-                    <NavLink to='dashboard'>DASHBOARD</NavLink>
-                    <NavLink to='our-menu'>OUR MENU</NavLink>
-                    <NavLink to='our-shop'>OUR SHOP</NavLink>
+                    <NavLink to='/contact-us'>CONTACT US</NavLink>
+                    <NavLink to='/dashboard'>DASHBOARD</NavLink>
+                    <NavLink to='/menu'>OUR MENU</NavLink>
+                    <NavLink to='/order/salad'>ORDER FOOD</NavLink>
                     <Link>
                         <img className="w-10" src="https://i.ibb.co/NVvd9TZ/cart.png" />
                     </Link>
@@ -54,27 +54,27 @@ const NavBar = () => {
                             <HiOutlineHome className="text-2xl" />HOME
                         </NavLink>
 
-                        <NavLink className='flex gap-3 py-4 border-b border-[#edff2538] border-dashed items-center' to='contact-us'>
+                        <NavLink className='flex gap-3 py-4 border-b border-[#edff2538] border-dashed items-center' to='/contact-us'>
                             <RiContactsLine className="text-2xl" />CONTACT US
                         </NavLink>
 
-                        <NavLink className='flex gap-3 py-4 border-b border-[#edff2538] border-dashed items-center' to='dashboard'>
+                        <NavLink className='flex gap-3 py-4 border-b border-[#edff2538] border-dashed items-center' to='/dashboard'>
                             <MdOutlineDashboard className="text-2xl" />DASHBOARD
                         </NavLink>
 
-                        <NavLink className='flex gap-3 py-4 border-b border-[#edff2538] border-dashed items-center' to='our-menu'>
+                        <NavLink className='flex gap-3 py-4 border-b border-[#edff2538] border-dashed items-center' to='/menu'>
                             <MdOutlineRestaurantMenu className="text-2xl" />OUR MENU
                         </NavLink>
 
-                        <NavLink className='flex gap-3 py-4 border-b border-[#edff2538] border-dashed items-center' to='our-shop'>
-                            <CiShop className="text-2xl" />OUR SHOP
+                        <NavLink className='flex gap-3 py-4 border-b border-[#edff2538] border-dashed items-center' to='/order/salad'>
+                            <CiShop className="text-2xl" />ORDER FOOD
                         </NavLink>
 
-                        <NavLink className='flex gap-3 py-4 border-b border-[#edff2538] border-dashed items-center' to='cart'>
+                        <NavLink className='flex gap-3 py-4 border-b border-[#edff2538] border-dashed items-center' to='/cart'>
                             <BsCartPlus className="text-2xl" />CART
                         </NavLink>
 
-                        <NavLink className='flex gap-3 py-4  items-center' to='profile'>
+                        <NavLink className='flex gap-3 py-4  items-center' to='/profile'>
                             <CgProfile className="text-2xl" />PROFILE
                         </NavLink>
 

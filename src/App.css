@@ -16,10 +16,62 @@
     object-fit: cover;
 }
 
+.featured{
+    background: linear-gradient(#000000a1, #000000a1), url('assets/home/featured.jpg') ;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+.react-parallax-bgimage{
+    height: 100%;
+    object-fit: cover;
+}
+
+.react-tabs__tab-list .react-tabs__tab{
+    background: none;   
+    text-transform: uppercase;
+    max-width: fit-content; 
+    outline: none;
+    font-weight: 600;
+    font-family:  "Inter", sans-serif;
+    cursor: pointer;
+    padding: 2px 0px;
+    transition: all;
+    transition-duration: 300ms;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    border-bottom: 3px solid #bb850600 !important;
+}
+.react-tabs__tab-list{
+    border: none !important;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+}
+.react-tabs__tab-list .react-tabs__tab--selected{
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 3px solid #BB8506 !important;
+    color: #BB8506;
+}
+
+
 
 @media only screen and (max-width: 640px) {
     .carousel-img-div {
         height: 450px;
+    }
+}
+
+@media only screen and (max-width: 450px) {
+    .carousel-img-div {
+        height: 450px;
+    }
+    .react-tabs__tab-list{
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        row-gap: 10px;
     }
 }
 

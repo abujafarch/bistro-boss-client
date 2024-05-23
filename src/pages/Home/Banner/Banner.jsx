@@ -11,7 +11,7 @@ import img6 from '../../../assets/home/06.png'
 const Banner = () => {
     return (
         <div className=" " >
-            <Carousel showThumbs={true} swipeable={true} >
+            <Carousel showThumbs={true} autoPlay={true} >
 
                 <div className="carousel-img-div">
                     <img src={img1} />
