@@ -31,11 +31,11 @@ const NavBar = () => {
                     <NavLink to='/contact-us'>CONTACT US</NavLink>
                     <NavLink to='/dashboard'>DASHBOARD</NavLink>
                     <NavLink to='/menu'>OUR MENU</NavLink>
-                    <NavLink to='/order/salad'>ORDER FOOD</NavLink>
+                    <NavLink to='/order/salads'>ORDER FOOD</NavLink>
                     <Link>
                         <img className="w-10" src="https://i.ibb.co/NVvd9TZ/cart.png" />
                     </Link>
-                    <NavLink to='sign-out'>SIGN OUT</NavLink>
+                    <NavLink to='/login'>LOGIN</NavLink>
                     <Link>
                         <img className="w-8 h-8 rounded-full" src="https://i.ibb.co/56z5Y3h/profile.png" />
                     </Link>
@@ -45,36 +45,36 @@ const NavBar = () => {
                     <HiOutlineMenu />
                 </button>
 
-                <div className={`absolute flex z-50 flex-col w-[240px] transition-all duration-500 ease-in-out  right-0 top-20  md:top-24 text-white bg-[#200f27] font-semibold border border-[#EEFF25] rounded-xl  ${openMenu ? 'opacity-100 block' : 'opacity-0 hidden'}`}>
+                <div className={`absolute flex lg:hidden z-50 flex-col w-[240px] transition-all duration-500 ease-in-out  right-0 top-20  md:top-24 text-white bg-[#200f27] font-semibold border border-[#EEFF25] rounded-xl  ${openMenu ? 'opacity-100 block' : 'opacity-0 hidden'}`}>
 
                     <button onClick={() => setOpenMenu(false)} className="text-xl absolute right-0 top-0 translate-x-[30%] -translate-y-[30%] w-max text-red-700 p-[6px] rounded-full bg-[#311212]"><RxCross2 /></button>
 
                     <div className="flex flex-col px-6 pt-3">
-                        <NavLink to='/' className='flex gap-3 py-4 border-b border-[#edff2538] border-dashed items-center'>
+                        <NavLink onClick={() => setOpenMenu(false)} to='/' className='flex gap-3 py-4 border-b border-[#edff2538] border-dashed items-center'>
                             <HiOutlineHome className="text-2xl" />HOME
                         </NavLink>
 
-                        <NavLink className='flex gap-3 py-4 border-b border-[#edff2538] border-dashed items-center' to='/contact-us'>
+                        <NavLink onClick={() => setOpenMenu(false)} className='flex gap-3 py-4 border-b border-[#edff2538] border-dashed items-center' to='/contact-us'>
                             <RiContactsLine className="text-2xl" />CONTACT US
                         </NavLink>
 
-                        <NavLink className='flex gap-3 py-4 border-b border-[#edff2538] border-dashed items-center' to='/dashboard'>
+                        <NavLink onClick={() => setOpenMenu(false)} className='flex gap-3 py-4 border-b border-[#edff2538] border-dashed items-center' to='/dashboard'>
                             <MdOutlineDashboard className="text-2xl" />DASHBOARD
                         </NavLink>
 
-                        <NavLink className='flex gap-3 py-4 border-b border-[#edff2538] border-dashed items-center' to='/menu'>
+                        <NavLink onClick={() => setOpenMenu(false)} className='flex gap-3 py-4 border-b border-[#edff2538] border-dashed items-center' to='/menu'>
                             <MdOutlineRestaurantMenu className="text-2xl" />OUR MENU
                         </NavLink>
 
-                        <NavLink className='flex gap-3 py-4 border-b border-[#edff2538] border-dashed items-center' to='/order/salad'>
+                        <NavLink onClick={() => setOpenMenu(false)} className='flex gap-3 py-4 border-b border-[#edff2538] border-dashed items-center' to='/order/salads'>
                             <CiShop className="text-2xl" />ORDER FOOD
                         </NavLink>
 
-                        <NavLink className='flex gap-3 py-4 border-b border-[#edff2538] border-dashed items-center' to='/cart'>
+                        <NavLink onClick={() => setOpenMenu(false)} className='flex gap-3 py-4 border-b border-[#edff2538] border-dashed items-center' to='/cart'>
                             <BsCartPlus className="text-2xl" />CART
                         </NavLink>
 
-                        <NavLink className='flex gap-3 py-4  items-center' to='/profile'>
+                        <NavLink onClick={() => setOpenMenu(false)} className='flex gap-3 py-4  items-center' to='/profile'>
                             <CgProfile className="text-2xl" />PROFILE
                         </NavLink>
 
@@ -83,7 +83,9 @@ const NavBar = () => {
                     <hr className="border-none h-[1px] bg-[#edff2546]" />
 
                     <div className={`py-4 px-6`}>
-                        <button className='flex bg-[#edff25] gap-3 items-center justify-center w-full py-2  text-center rounded-md text-black'>SIGN OUT</button>
+                        <NavLink to='/login'>
+                            <button className='flex bg-[#edff25] gap-3 items-center justify-center w-full py-2  text-center rounded-md text-black'>LOGIN</button>
+                        </NavLink>
                     </div>
                 </div>
             </nav>

@@ -12,7 +12,7 @@ const Testimonials = () => {
     const [reviews, setReviews] = useState([])
 
     useEffect(() => {
-        fetch('reviews.json')
+        fetch('http://localhost:5000/reviews')
             .then(res => res.json())
             .then(data => {
                 console.log(data);
@@ -29,21 +29,21 @@ const Testimonials = () => {
             <div>
                 <Swiper navigation={true} loop={true} modules={[Navigation]} className="mySwiper flex flex-col items-center justify-center">
                     {
-                        reviews.map(review => 
-                        <>
-                            <SwiperSlide >
-                                <div className="max-w-[1096px] font-inter mx-auto text-center flex flex-col items-center justify-center px-10">
-                                    <Rating
-                                        style={{ maxWidth: 180 }}
-                                        value={review.rating}
-                                        readOnly
-                                    />
-                                    <p className="font-cinzel text-[250px] -my-14">&apos;&apos;</p>
-                                    <p className="text-[#444444] sm:text-xl -mt-40">{review.details}</p>
-                                    <h5 className="text-[#CD9003] text-3xl uppercase mt-5">{review.name}</h5>
-                                </div>
-                            </SwiperSlide>
-                        </>)
+                        reviews.map(review =>
+                            <>
+                                <SwiperSlide >
+                                    <div className="max-w-[1096px] font-inter mx-auto text-center flex flex-col items-center justify-center px-10">
+                                        <Rating
+                                            style={{ maxWidth: 180 }}
+                                            value={review.rating}
+                                            readOnly
+                                        />
+                                        <p className="font-cinzel text-[250px] -my-14">&apos;&apos;</p>
+                                        <p className="text-[#444444] sm:text-xl -mt-40">{review.details}</p>
+                                        <h5 className="text-[#CD9003] text-3xl uppercase mt-5">{review.name}</h5>
+                                    </div>
+                                </SwiperSlide>
+                            </>)
                     }
                 </Swiper>
             </div>
