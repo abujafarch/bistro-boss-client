@@ -14,9 +14,9 @@ const MenuCategory = ({ items, title, tag, coverImg }) => {
                     items.map(item => <MenuItem key={item._id} item={item}></MenuItem>)
                 }
             </div>
-            <Link to={`/order/${title}`}>
+            {title && <Link to={`/order/${title}`}>
                 <div className="flex justify-center mb-20 px-4"><button className="border-b-4 border-black py-2 px-5 rounded-xl hover:bg-black hover:text-white transition-all duration-500 ease-in-out uppercase font-inter text-sm sm:text-lg">ORDER YOUR FAVORITE FOOD</button></div>
-            </Link>
+            </Link>}
         </div>
     );
 };

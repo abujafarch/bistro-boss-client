@@ -6,15 +6,15 @@ import '../../src/App.css'
 const Main = () => {
 
     const locationPath = useLocation().pathname
-    const loginPath = locationPath.includes('login')
+    const validatePath = locationPath.includes('login') || locationPath.includes('signup')
 
     return (
         <div>
-            {!loginPath && <div className="fixed top-0 left-0 z-30 w-full"><NavBar></NavBar></div>}
+            {!validatePath && <div className="fixed top-0 left-0 z-30 w-full"><NavBar></NavBar></div>}
 
             <Outlet></Outlet>
-            
-            {!loginPath && <Footer></Footer>}
+
+            {!validatePath && <Footer></Footer>}
         </div>
     );
 };

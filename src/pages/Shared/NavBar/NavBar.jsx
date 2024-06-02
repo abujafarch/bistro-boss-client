@@ -8,16 +8,29 @@ import { BsCartPlus } from "react-icons/bs";
 import { CgProfile } from "react-icons/cg";
 import { HiOutlineMenu } from "react-icons/hi";
 import { RxCross2 } from "react-icons/rx";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { AuthContext } from "../../../provider/AuthProvider";
+import { FaCartArrowDown } from "react-icons/fa";
+import useCart from "../../../hooks/useCart";
+import './navbar.css'
+import useAdmin from "../../../hooks/useAdmin";
 
 
 
 const NavBar = () => {
 
+    const { user, logOut } = useContext(AuthContext)
     const [openMenu, setOpenMenu] = useState(false)
-    // const handleOpenMenu = () => {
-    //     setOpenMenu(!openMenu)
-    // }
+    const [cart] = useCart()
+    const [isAdmin] = useAdmin()
+
+    const handleLogout = () => {
+        logOut()
+            .then(() => console.log('logged out'))
+            .catch((err) => console.log(err))
+
+        setOpenMenu(false)
+    }
 
     return (
         <div className="max-w-[1920px] px-4 sm:px-7 md:px-10 lg:px-10 xl:px-14 bg-[#15151580] mx-auto">
@@ -29,15 +42,22 @@ const NavBar = () => {
                 <div className="items-center text-white font-semibold gap-4 hidden lg:flex">
                     <NavLink to='/'>HOME</NavLink>
                     <NavLink to='/contact-us'>CONTACT US</NavLink>
-                    <NavLink to='/dashboard'>DASHBOARD</NavLink>
+                    {user && isAdmin && <NavLink to='/dashboard/adminHome'>DASHBOARD</NavLink>}
+                    {user && !isAdmin && <NavLink to='/dashboard/userHome'>DASHBOARD</NavLink>}
                     <NavLink to='/menu'>OUR MENU</NavLink>
                     <NavLink to='/order/salads'>ORDER FOOD</NavLink>
+
+                    <Link to='/dashboard/cart'><div className="bg-[#00000048] p-2 rounded-full flex items-center justify-center relative">
+                        <FaCartArrowDown className="font-inter text-2xl"></FaCartArrowDown>
+                        <p className="bg-red-500 flex items-center justify-center w-5 h-5 rounded-full absolute bottom-0 text-xs right-0 translate-x-[15%] translate-y-[15%]">{cart.length}</p>
+                    </div></Link>
+
+                    {
+                        !user ? <NavLink to='/login'>LOGIN</NavLink> : <button onClick={handleLogout}>LOGOUT</button>
+                    }
+
                     <Link>
-                        <img className="w-10" src="https://i.ibb.co/NVvd9TZ/cart.png" />
-                    </Link>
-                    <NavLink to='/login'>LOGIN</NavLink>
-                    <Link>
-                        <img className="w-8 h-8 rounded-full" src="https://i.ibb.co/56z5Y3h/profile.png" />
+                        <img className="w-8 h-8 rounded-full" src="../../../assets/others/profile.png" />
                     </Link>
                 </div>
 
@@ -58,9 +78,12 @@ const NavBar = () => {
                             <RiContactsLine className="text-2xl" />CONTACT US
                         </NavLink>
 
-                        <NavLink onClick={() => setOpenMenu(false)} className='flex gap-3 py-4 border-b border-[#edff2538] border-dashed items-center' to='/dashboard'>
+                        {user && isAdmin && <NavLink onClick={() => setOpenMenu(false)} className='flex gap-3 py-4 border-b border-[#edff2538] border-dashed items-center' to='/dashboard/adminHome'>
                             <MdOutlineDashboard className="text-2xl" />DASHBOARD
-                        </NavLink>
+                        </NavLink>}
+                        {user && !isAdmin && <NavLink onClick={() => setOpenMenu(false)} className='flex gap-3 py-4 border-b border-[#edff2538] border-dashed items-center' to='/dashboard/userHome'>
+                            <MdOutlineDashboard className="text-2xl" />DASHBOARD
+                        </NavLink>}
 
                         <NavLink onClick={() => setOpenMenu(false)} className='flex gap-3 py-4 border-b border-[#edff2538] border-dashed items-center' to='/menu'>
                             <MdOutlineRestaurantMenu className="text-2xl" />OUR MENU
@@ -70,7 +93,7 @@ const NavBar = () => {
                             <CiShop className="text-2xl" />ORDER FOOD
                         </NavLink>
 
-                        <NavLink onClick={() => setOpenMenu(false)} className='flex gap-3 py-4 border-b border-[#edff2538] border-dashed items-center' to='/cart'>
+                        <NavLink onClick={() => setOpenMenu(false)} className='flex gap-3 py-4 border-b border-[#edff2538] border-dashed items-center' to='/dashboard/cart'>
                             <BsCartPlus className="text-2xl" />CART
                         </NavLink>
 
@@ -83,9 +106,12 @@ const NavBar = () => {
                     <hr className="border-none h-[1px] bg-[#edff2546]" />
 
                     <div className={`py-4 px-6`}>
-                        <NavLink to='/login'>
-                            <button className='flex bg-[#edff25] gap-3 items-center justify-center w-full py-2  text-center rounded-md text-black'>LOGIN</button>
-                        </NavLink>
+                        {!user ?
+                            <NavLink to='/login'>
+                                <button onClick={() => setOpenMenu(false)} className='flex bg-[#edff25] gap-3 items-center justify-center w-full py-2  text-center rounded-md text-black'>LOGIN</button>
+                            </NavLink>
+
+                            : <button onClick={handleLogout} className='flex bg-[#edff25] gap-3 items-center justify-center w-full py-2  text-center rounded-md text-black'>LOGOUT</button>}
                     </div>
                 </div>
             </nav>

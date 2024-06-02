@@ -6,7 +6,7 @@ const RecommendsItems = () => {
     const [recommendsItems, setRecommendsItems] = useState([])
 
     useEffect(() => {
-        fetch('menu.json')
+        fetch('https://bistro-boss-server-delta-nine.vercel.app/menu')
             .then(res => res.json())
             .then(data => {
                 const recommendsItems = data.filter(recommendsItem => recommendsItem.category === 'offered')

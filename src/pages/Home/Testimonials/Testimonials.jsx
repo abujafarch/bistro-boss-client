@@ -12,7 +12,7 @@ const Testimonials = () => {
     const [reviews, setReviews] = useState([])
 
     useEffect(() => {
-        fetch('http://localhost:5000/reviews')
+        fetch('https://bistro-boss-server-delta-nine.vercel.app/reviews')
             .then(res => res.json())
             .then(data => {
                 console.log(data);
@@ -31,7 +31,7 @@ const Testimonials = () => {
                     {
                         reviews.map(review =>
                             <>
-                                <SwiperSlide >
+                                <SwiperSlide key={review._id} >
                                     <div className="max-w-[1096px] font-inter mx-auto text-center flex flex-col items-center justify-center px-10">
                                         <Rating
                                             style={{ maxWidth: 180 }}
